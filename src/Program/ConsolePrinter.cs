@@ -1,23 +1,18 @@
 using System;
 using System.Text;
-using System.Threading;
 
 namespace Ucu.Poo.GameOfLife;
 
 public class ConsolePrinter
 {
-    public bool Tablero { get; set; }
-    gameBoard.GetLength(0) //ancho del tablero, se lo "pido" a Board
-    gameBoard.GetLength(1) //altura del tablero, se lo "pido" a Board
-
-    public ConsolePrinter(bool b, int width, int height)
-    {
-        Tablero = b;
-    }
-        
-   public MostrarTablero(Board)
+   public static void MostrarTablero(int [,] Board)
     {
         Console.Clear();
+
+        bool[,] b = Board.gameboard;
+        int width = Board.GetLength(0); //ancho del tablero, se lo "pido" a Board
+        int height = Board.GetLength(1); //altura del tablero, se lo "pido" a Board
+        
         StringBuilder s = new StringBuilder();
         for (int y = 0; y < height ; y++)
         {
@@ -34,10 +29,5 @@ public class ConsolePrinter
             }
             s.Append("\n");
         }
-        Console.WriteLine(s.ToString());
-        //=================================================
-        //Invocar método para calcular siguiente generación
-        //=================================================
-        Thread.Sleep(500);
     }
 }
