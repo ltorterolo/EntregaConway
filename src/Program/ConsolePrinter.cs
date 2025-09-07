@@ -29,5 +29,6 @@ public class ConsolePrinter
             }
             s.Append("\n");
         }
+        Console.WriteLine(s.ToString());
     }
 }

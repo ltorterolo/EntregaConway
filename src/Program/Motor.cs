@@ -5,11 +5,11 @@ namespace Ucu.Poo.GameOfLife;
 
 public class Motor // reglas de celulas vivas 
 {
-    public void NuevoBoard(Board board) 
+    public NuevoBoard(Board board)
     {
         Cell[,] gameBoard = board.GetCells(); // importo el tablero de la clase Board 
         int boardWidth = gameBoard.GetLength(0); // saco las dimensiones del tablero
-        int boardHeight = gameBoard.GetLength(1); // origianl para poder crear una copia
+        int boardHeight = gameBoard.GetLength(1); // original para poder crear una copia
         
         Cell[,] cloneboard = new Cell[boardWidth, boardHeight]; //creo la copia 
         for (int x = 0; x < boardWidth; x++) // recorremos todo el tablero 
@@ -30,9 +30,9 @@ public class Motor // reglas de celulas vivas
                     }
                 }
 
-                if (gameBoard[x, y].Viva) //si la celda actual esta viva
+                if (gameBoard[x, y].Viva) //si la celda actual está viva
                 {
-                    aliveNeighbors--; //se resta xq no cuenta 
+                    aliveNeighbors--; //se resta porque no cuenta 
                 }
 
                 if (gameBoard[x, y].Viva && aliveNeighbors < 2) //comienza a acuilizar el tablero
@@ -57,7 +57,7 @@ public class Motor // reglas de celulas vivas
                 }
             }
         }
-
         gameBoard = cloneboard;
+        return gameBoard;
     }
 }
