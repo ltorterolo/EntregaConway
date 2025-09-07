@@ -4,22 +4,26 @@ using System.IO;
 
 public class BoardImporter
 {
-    public static bool[,] LoadFromFile(string url)
+    public static bool[,] LoadFromFile(string fileName)
     {
-        string content = File.ReadAllText(url);
-        string[] contentLines = content.Split('\n');
+        string content = File.ReadAllText(fileName); // lee el archivo (string)
+        string[] lines = content.Split('\n'); // parte el texto en lineas, cada linea es una fila del tablero
         
-        // crea la matriz
-        bool[,] board = new bool[contentLines.Length, contentLines[0].Length];
+        // cant de filas y columnas
+        int height = lines.Length; 
+        int width  = lines[0].Length;
+        
+        // crea la matriz x = columna, y = fila
+        bool[,] board = new bool[width, height];
         
         // recorre filas y columnas
-        for (int y = 0; y < contentLines.Length; y++)
+        for (int y = 0; y < height; y++)
         {
-            for (int x = 0; x < contentLines[y].Length; x++)
+            for (int x = 0; x < width; x++)
             {
-                if (contentLines[y][x] == '1')
+                if (lines[y][x] == '1')
                 {
-                    board[y, x] = true;
+                    board[x, y] = true; // si lee 0, no hace nada, queda false por defecto
                 }
             }
         }
