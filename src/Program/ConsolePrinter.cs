@@ -5,7 +5,7 @@ namespace Ucu.Poo.GameOfLife;
 
 public class ConsolePrinter
 {
-   public static void MostrarTablero(Board board)
+   public static void MostrarTablero(Board board) // llamo a Board
     {
         Console.Clear();
 
