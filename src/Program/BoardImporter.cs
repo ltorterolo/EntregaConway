@@ -4,7 +4,7 @@ using System.IO;
 
 public class BoardImporter
 {
-    public static bool[,] LoadFromFile(string fileName)
+    public static Cell[,] LoadFromFile(string fileName)
     {
         string content = File.ReadAllText(fileName); // lee el archivo (string)
         string[] lines = content.Split('\n'); // parte el texto en lineas, cada linea es una fila del tablero
@@ -14,7 +14,7 @@ public class BoardImporter
         int width  = lines[0].Length;
         
         // crea la matriz x = columna, y = fila
-        bool[,] board = new bool[width, height];
+        Cell[,] board = new Cell[width, height];
         
         // recorre filas y columnas
         for (int y = 0; y < height; y++)
@@ -23,7 +23,11 @@ public class BoardImporter
             {
                 if (lines[y][x] == '1')
                 {
-                    board[x, y] = true; // si lee 0, no hace nada, queda false por defecto
+                    board[x, y] = new Cell(true);
+                }
+                else
+                {
+                    board[x, y] = new Cell(false);
                 }
             }
         }

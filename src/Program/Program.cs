@@ -7,7 +7,7 @@ namespace Ucu.Poo.GameOfLife
     {
         static void Main(string[] args)
         {
-            BoardImporter(board);
+            Board board = new Board(BoardImporter.LoadFromFile("board.txt"));
             while (true)
             {
                 ConsolePrinter.MostrarTablero(board);

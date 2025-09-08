@@ -5,9 +5,9 @@ namespace Ucu.Poo.GameOfLife;
 
 public class Motor // reglas de celulas vivas 
 {
-    public Cell[,] NuevoBoard(Board board)
-    {
-        Cell[,] gameBoard = board.?(); // importo el tablero de la clase Board 
+    public static Board NuevoBoard(Board board)
+    { 
+        Cell[,] gameBoard = new Cell[board.width, board.height]; // importo el tablero de la clase Board 
         int boardWidth = gameBoard.GetLength(0); // saco las dimensiones del tablero
         int boardHeight = gameBoard.GetLength(1); // original para poder crear una copia
         
@@ -23,29 +23,29 @@ public class Motor // reglas de celulas vivas
                 {
                     for (int j = y - 1; j <= y + 1; j++)
                     {
-                        if (i >= 0 && i < boardWidth && j >= 0 && j < boardHeight && gameBoard[i, j].Viva) // verifca no salir del tablero
+                        if (i >= 0 && i < boardWidth && j >= 0 && j < boardHeight && board.IsAlive(i,j)) // verifca no salir del tablero
                         {
                             aliveNeighbors++;
                         }
                     }
                 }
 
-                if (gameBoard[x, y].Viva) //si la celda actual está viva
+                if (board.IsAlive(x,y)) //si la celda actual está viva
                 {
                     aliveNeighbors--; //se resta porque no cuenta 
                 }
 
-                if (gameBoard[x, y].Viva && aliveNeighbors < 2) //comienza a acuilizar el tablero
+                if (board.IsAlive(x,y) && aliveNeighbors < 2) //comienza a acuilizar el tablero
                 {
                     //Celula muere por baja población
                     cloneboard[x, y].Viva = false;
                 }
-                else if (gameBoard[x, y].Viva && aliveNeighbors > 3)
+                else if (board.IsAlive(x,y) && aliveNeighbors > 3)
                 {
                     //Celula muere por sobrepoblación
                     cloneboard[x, y].Viva = false;
                 }
-                else if (!gameBoard[x, y].Viva && aliveNeighbors == 3)
+                else if (!board.IsAlive(x,y) && aliveNeighbors == 3)
                 {
                     //Celula nace por reproducción
                     cloneboard[x, y].Viva = true;
@@ -57,6 +57,6 @@ public class Motor // reglas de celulas vivas
                 }
             }
         }
-        return cloneboard;
+        return new Board(cloneboard);
     }
 }

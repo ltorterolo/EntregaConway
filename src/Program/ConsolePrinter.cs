@@ -9,16 +9,16 @@ public class ConsolePrinter
     {
         Console.Clear();
 
-        Cell[,] b = board.Board;
-        int width = board.GetLength(0); //ancho del tablero, se lo "pido" a Board
-        int height = board.GetLength(1); //altura del tablero, se lo "pido" a Board
+        Cell[,] b = board.GameBoard;
+        int width = board.width; //ancho del tablero, se lo "pido" a Board
+        int height = board.height; //altura del tablero, se lo "pido" a Board
         
         StringBuilder s = new StringBuilder();
         for (int y = 0; y < height ; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                if(b[x,y])
+                if(b[x,y].Viva)
                 {
                     s.Append("|X|");
                 }
