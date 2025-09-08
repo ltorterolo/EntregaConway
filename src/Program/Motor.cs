@@ -7,7 +7,7 @@ public class Motor // reglas de celulas vivas
 {
     public Cell[,] NuevoBoard(Board board)
     {
-        Cell[,] gameBoard = board.GetCells(); // importo el tablero de la clase Board 
+        Cell[,] gameBoard = board.?(); // importo el tablero de la clase Board 
         int boardWidth = gameBoard.GetLength(0); // saco las dimensiones del tablero
         int boardHeight = gameBoard.GetLength(1); // original para poder crear una copia
         
