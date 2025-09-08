@@ -5,7 +5,7 @@ namespace Ucu.Poo.GameOfLife;
 
 public class Motor // reglas de celulas vivas 
 {
-    public NuevoBoard(Board board)
+    public Cell[,] NuevoBoard(Board board)
     {
         Cell[,] gameBoard = board.GetCells(); // importo el tablero de la clase Board 
         int boardWidth = gameBoard.GetLength(0); // saco las dimensiones del tablero
@@ -57,7 +57,6 @@ public class Motor // reglas de celulas vivas
                 }
             }
         }
-        gameBoard = cloneboard;
-        return gameBoard;
+        return cloneboard;
     }
 }
