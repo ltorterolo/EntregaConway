@@ -5,11 +5,11 @@ namespace Ucu.Poo.GameOfLife;
 
 public class ConsolePrinter
 {
-   public static void MostrarTablero(Board board) // llamo a Board
+    public static void MostrarTablero(Board board) // llamo a Board
     {
         Console.Clear();
 
-        bool[,] b = board.gameboard;
+        Cell[,] b = board.Board;
         int width = board.GetLength(0); //ancho del tablero, se lo "pido" a Board
         int height = board.GetLength(1); //altura del tablero, se lo "pido" a Board
         
