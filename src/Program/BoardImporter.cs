@@ -1,3 +1,5 @@
+using System;
+
 namespace Ucu.Poo.GameOfLife;
 // branch board importer
 using System.IO;
@@ -7,14 +9,13 @@ public class BoardImporter
     public static Cell[,] LoadFromFile(string fileName)
     {
         string content = File.ReadAllText(fileName); // lee el archivo (string)
-        string[] lines = content.Split('\n'); // parte el texto en lineas, cada linea es una fila del tablero
-        
+        string[] lines = content.Split("\n"); // parte el texto en lineas, cada linea es una fila del tablero
         // cant de filas y columnas
         int height = lines.Length; 
-        int width  = lines[0].Length;
-        
+        int width  = lines[0].Trim().Length;
+
         // crea la matriz x = columna, y = fila
-        Cell[,] board = new Cell[width, height];
+        Cell[,] board = new Cell[height, width];
         
         // recorre filas y columnas
         for (int y = 0; y < height; y++)
@@ -23,11 +24,11 @@ public class BoardImporter
             {
                 if (lines[y][x] == '1')
                 {
-                    board[x, y] = new Cell(true);
+                    board[y,x] = new Cell(true);
                 }
                 else
                 {
-                    board[x, y] = new Cell(false);
+                    board[y,x] = new Cell(false);
                 }
             }
         }
